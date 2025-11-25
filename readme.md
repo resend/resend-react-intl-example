@@ -1,6 +1,13 @@
-# React Email with React Intl
+# Resend and React Email with React Intl
 
-This example shows how to use React Email with [React Intl](https://formatjs.github.io/docs/react-intl).
+This example shows how to use Resend and React Email with [React Intl](https://formatjs.github.io/docs/react-intl).
+
+## Prerequisites
+
+To get the most out of this guide, you’ll need to:
+
+- [Create an API key](https://resend.com/api-keys)
+- [Verify your domain](https://resend.com/domains)
 
 ## Instructions
 
@@ -10,15 +17,23 @@ This example shows how to use React Email with [React Intl](https://formatjs.git
 npm install
   ```
 
-2. Run Preview Server locally:
+2. Run Next.js app locally:
 
   ```sh
 npm run dev
   ```
 
-3. Open URL in the browser:
+3. Send email in English:
 
-    http://localhost:3000
+  ```sh
+curl -X POST http://localhost:3000/api/send -H "Content-Type: application/json" -d '{"locale": "en"}'
+  ```
+
+4. Send email in Portuguese:
+
+  ```sh
+curl -X POST http://localhost:3000/api/send -H "Content-Type: application/json" -d '{"locale": "pt"}'
+  ```
 
 ## License
 
