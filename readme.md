@@ -30,8 +30,8 @@ npm run dev
   ```
 
 4. Open URL in your browser: 
-  - http://localhost:3000/api/send/en
-  - http://localhost:3000/api/send/pt
+    - http://localhost:3000/api/send/en
+    - http://localhost:3000/api/send/pt
 
 ## License
 
