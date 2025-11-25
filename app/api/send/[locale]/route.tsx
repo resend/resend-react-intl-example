@@ -3,7 +3,7 @@ import Pricing from '@/emails/pricing';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(ctx: RouteContext<'/api/send/[locale]'>) {
+export async function POST(_: Request, ctx: RouteContext<'/api/send/[locale]'>) {
   const { locale } = await ctx.params;
   const response = await resend.emails.send({
     from: 'Acme <onboarding@resend.dev>',
