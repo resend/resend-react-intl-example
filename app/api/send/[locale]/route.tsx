@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import { Resend } from 'resend';
 import Pricing from '@/emails/pricing';
 
 export async function GET(_: Request, ctx: RouteContext<'/api/send/[locale]'>) {
