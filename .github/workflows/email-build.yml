@@ -1,11 +1,11 @@
-name: Build
+name: Email Build
 on:
   push:
     branches:
       - main
   pull_request:
 jobs:
-  build:
+  email-build:
     runs-on: buildjet-4vcpu-ubuntu-2204
     container:
       image: node:24
