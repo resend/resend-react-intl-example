@@ -29,7 +29,7 @@ npm install
 npm run dev
   ```
 
-4. Open URL in your browser: 
+4. Test the localized email sending:
     - http://localhost:3000/api/send/en
     - http://localhost:3000/api/send/pt
 
