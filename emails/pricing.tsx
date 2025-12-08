@@ -63,7 +63,7 @@ const ptMessages = {
 };
 
 export function Pricing({ locale }: PricingProps) {
-  const messages = locale === 'en' ? enMessages : ptMessages;
+  const messages = locale === 'pt' ? ptMessages : enMessages;
   const { formatMessage } = createIntl({
     locale,
     messages,
