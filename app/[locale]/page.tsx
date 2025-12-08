@@ -1,57 +1,39 @@
 import { createIntl } from 'react-intl';
 import { notFound } from 'next/navigation';
-import Pricing from '@/emails/pricing';
-import { resend } from '@/lib/resend';
-
-const validLocales = ['en', 'pt'] as const;
-type Locale = (typeof validLocales)[number];
+import { sendEmail } from '@/actions/send-email';
+import { Locale, messagesPerLocale, validLocales } from '@/lib/i18n';
 
 export default async function Home({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
-
-  if (!validLocales.includes(locale as Locale)) {
+  if (!validLocales.includes(locale)) {
     notFound();
   }
 
   const { formatMessage } = createIntl({
-    messages:
-      locale === 'pt'
-        ? {
-            'Submit in English': 'Enviar em Português',
-          }
-        : {
-            'Submit in English': 'Submit in English',
-          },
+    messages: messagesPerLocale[locale],
     locale,
   });
 
   return (
-    <form
-      action={async () => {
-        'use server';
-        const response = await resend.emails.send({
-          from: 'Acme <onboarding@resend.dev>',
-          to: ['delivered@resend.dev'],
-          subject: 'Pricing discount',
-          react: <Pricing locale={locale as Locale} />,
-        });
+    <>
+      <form
+        action={async () => {
+          'use server'
+          await sendEmail(locale);
+        }}
+      >
+        <button type="submit">
+          {formatMessage({ id: 'Submit in English' })}
+        </button>
 
-        if (response.error) {
-          throw new Error('Could not send email', {
-            cause: response.error,
-          });
-        }
-
-        console.info(response.data);
-      }}
-    >
-      <button type="submit">
-        {formatMessage({ id: 'Submit in English' })}
-      </button>
-    </form>
+      </form>
+      <a href={locale === 'en' ? '/pt' : '/en'}>
+        {formatMessage({ id: 'Go to other translation' })}
+      </a>
+    </>
   );
 }
