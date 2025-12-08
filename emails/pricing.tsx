@@ -1,4 +1,3 @@
-import { Locale, messagesPerLocale } from '@/lib/i18n';
 import {
   Body,
   Button,
@@ -12,6 +11,7 @@ import {
   Text,
 } from '@react-email/components';
 import { createIntl } from 'react-intl';
+import { type Locale, messagesPerLocale } from '@/lib/i18n';
 
 interface PricingProps {
   locale: Locale;

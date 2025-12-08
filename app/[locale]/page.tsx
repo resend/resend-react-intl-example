@@ -1,7 +1,7 @@
-import { createIntl } from 'react-intl';
 import { notFound } from 'next/navigation';
+import { createIntl } from 'react-intl';
 import { sendEmail } from '@/actions/send-email';
-import { Locale, messagesPerLocale, validLocales } from '@/lib/i18n';
+import { type Locale, messagesPerLocale, validLocales } from '@/lib/i18n';
 
 export default async function Home({
   params,
@@ -22,14 +22,13 @@ export default async function Home({
     <>
       <form
         action={async () => {
-          'use server'
+          'use server';
           await sendEmail(locale);
         }}
       >
         <button type="submit">
           {formatMessage({ id: 'Submit in English' })}
         </button>
-
       </form>
       <a href={locale === 'en' ? '/pt' : '/en'}>
         {formatMessage({ id: 'Go to other translation' })}

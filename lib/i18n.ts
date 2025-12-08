@@ -49,6 +49,5 @@ export const messagesPerLocale: Record<Locale, Record<string, string>> = {
       'Oferta por tempo limitado - Atualize agora e economize 20%',
     'No credit card required. 14-day free trial available.':
       'Não é necessário cartão de crédito. Teste gratuito de 14 dias disponível.',
-  }
+  },
 };
-

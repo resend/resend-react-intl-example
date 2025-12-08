@@ -6,10 +6,10 @@ const nextConfig: NextConfig = {
       {
         source: '/',
         statusCode: 302,
-        destination: '/en'
-      }
-    ]
-  }
+        destination: '/en',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -1,7 +1,7 @@
-'use server'
+'use server';
 
 import Pricing from '@/emails/pricing';
-import { Locale } from '@/lib/i18n';
+import type { Locale } from '@/lib/i18n';
 import { resend } from '@/lib/resend';
 
 export async function sendEmail(locale: Locale) {
