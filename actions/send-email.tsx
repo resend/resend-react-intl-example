@@ -1,10 +1,12 @@
 'use server';
 
+import { Resend } from 'resend';
 import Pricing from '@/emails/pricing';
 import type { Locale } from '@/lib/i18n';
-import { resend } from '@/lib/resend';
 
 export async function sendEmail(locale: Locale) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
   const response = await resend.emails.send({
     from: 'Acme <onboarding@resend.dev>',
     to: ['delivered@resend.dev'],

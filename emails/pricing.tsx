@@ -46,11 +46,11 @@ export function Pricing({ locale }: PricingProps) {
               </Text>
               <Text className="text-gray-700 text-[14px] leading-[20px] mt-[16px] mb-[24px]">
                 {formatMessage({
-                  id: "email.copy",
+                  id: 'email.copy',
                 })}
               </Text>
               <ul className="text-gray-500 text-[14px] leading-[24px] mb-[32px] pl-[14px]">
-                {new Array(5).keys().map(( index) => (
+                {new Array(5).keys().map((index) => (
                   <li key={index} className="mb-[12px]">
                     {formatMessage({ id: `email.feature-${index}` })}
                   </li>

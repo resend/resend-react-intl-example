@@ -26,9 +26,7 @@ export default async function Home({
           await sendEmail(locale);
         }}
       >
-        <button type="submit">
-          {formatMessage({ id: 'home.submit' })}
-        </button>
+        <button type="submit">{formatMessage({ id: 'home.submit' })}</button>
       </form>
       <a href={locale === 'en' ? '/pt' : '/en'}>
         {formatMessage({ id: 'home.switch-language-link' })}
