@@ -27,11 +27,11 @@ export default async function Home({
         }}
       >
         <button type="submit">
-          {formatMessage({ id: 'Submit in English' })}
+          {formatMessage({ id: 'home.submit' })}
         </button>
       </form>
       <a href={locale === 'en' ? '/pt' : '/en'}>
-        {formatMessage({ id: 'Go to other translation' })}
+        {formatMessage({ id: 'home.switch-language-link' })}
       </a>
     </>
   );
