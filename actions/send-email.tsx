@@ -1,17 +1,16 @@
 'use server';
 
 import { Resend } from 'resend';
-import Pricing from '@/emails/pricing';
-import type { Locale } from '@/lib/i18n';
+import WelcomeEmail from '@/emails/welcome';
 
-export async function sendEmail(locale: Locale) {
+export async function sendEmail(locale: 'pt' | 'en' | 'es') {
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   const response = await resend.emails.send({
     from: 'Acme <onboarding@resend.dev>',
     to: ['delivered@resend.dev'],
     subject: 'Pricing discount',
-    react: <Pricing locale={locale as Locale} />,
+    react: <WelcomeEmail name="John Lennon" locale={locale} />,
   });
 
   if (response.error) {

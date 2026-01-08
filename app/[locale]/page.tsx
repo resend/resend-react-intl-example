@@ -1,21 +1,20 @@
 import { notFound } from 'next/navigation';
 import { createIntl } from 'react-intl';
 import { sendEmail } from '@/actions/send-email';
-import { type Locale, messagesPerLocale, validLocales } from '@/lib/i18n';
 
 export default async function Home({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: 'pt' | 'en' | 'es' }>;
 }) {
   const { locale } = await params;
-  if (!validLocales.includes(locale)) {
+  if (!['pt', 'en', 'es'].includes(locale)) {
     notFound();
   }
 
   const { formatMessage } = createIntl({
-    messages: messagesPerLocale[locale],
     locale,
+    messages: await import(`../../messages/${locale}/home.json`),
   });
 
   return (
@@ -26,11 +25,19 @@ export default async function Home({
           await sendEmail(locale);
         }}
       >
-        <button type="submit">{formatMessage({ id: 'home.submit' })}</button>
+        <button type="submit">{formatMessage({ id: 'submit' })}</button>
       </form>
-      <a href={locale === 'en' ? '/pt' : '/en'}>
-        {formatMessage({ id: 'home.switch-language-link' })}
-      </a>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <a href="/en">
+          {formatMessage({ id: 'switch-to-en' })}
+        </a>
+        <a href="/es">
+          {formatMessage({ id: 'switch-to-es' })}
+        </a>
+        <a href="/pt">
+          {formatMessage({ id: 'switch-to-pt' })}
+        </a>
+      </div>
     </>
   );
 }
