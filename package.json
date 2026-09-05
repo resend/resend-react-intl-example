@@ -1,6 +1,6 @@
 {
   "name": "resend-react-intl-example",
-  "packageManager": "pnpm@11.3.0",
+  "packageManager": "pnpm@12.3.4",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
